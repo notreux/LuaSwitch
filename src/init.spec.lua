@@ -6,14 +6,14 @@ return function()
         it("should execute a case and break", function()
             local value = 0
             switch("B") {
-                case "A" (function(__break)
+                case "A" (function(stop)
                     value += 1
-                    __break()
+                    stop()
                 end),
                 
-                case "B" (function(__break)
+                case "B" (function(stop)
                     value += 1 
-                    __break()
+                    stop()
                 end),
 
                 default (function()
