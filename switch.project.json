@@ -1,0 +1,14 @@
+{
+    "name": "LuaSwitch",
+    "tree": {
+      "$className": "DataModel",
+      "$ignoreUnknownInstances": true,
+      "ReplicatedStorage": {
+        "$className": "ReplicatedStorage",
+        "$ignoreUnknownInstances": true,
+        "Switch": {
+          "$path": "default.project.json"
+        }
+      }
+    }
+  }
