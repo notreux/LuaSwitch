@@ -6,7 +6,7 @@
       "ReplicatedStorage": {
         "$className": "ReplicatedStorage",
         "$ignoreUnknownInstances": true,
-        "Switch": {
+        "LuaSwitch": {
           "$path": "default.project.json"
         }
       }

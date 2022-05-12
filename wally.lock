@@ -3,7 +3,7 @@
 registry = "test"
 
 [[package]]
-name = "TheHackerPuppy/LuaSwitch"
+name = "thehackerpuppy/luaswitch"
 version = "1.0.0"
 dependencies = []
 

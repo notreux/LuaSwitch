@@ -13,4 +13,12 @@ function module.wrap(f, ...)
 	end
 end
 
+function module.getNextCase(s, cases)
+	for i = s, #cases do
+		if typeof(cases[i]) == "table" and cases[i].case then
+			return cases[i].case
+		end
+	end
+end
+
 return module

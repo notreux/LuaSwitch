@@ -1,4 +1,4 @@
-local util = require(script.Util)
+local util = require(script.util)
 
 local function run(case, cases)
 	local breakIt = false
@@ -8,17 +8,26 @@ local function run(case, cases)
 		breakIt = true
 	end
 
-	for _, it in ipairs(cases) do
+	for i, it in ipairs(cases) do
+		local isFunc = typeof(it) == "function"
 		if breakIt then 
 			return 
-		elseif it.sentence_type == "case" and it.condition == case then
-			it.case(stop)
+		elseif isFunc == false and it.sentence_type == "case" then
+			default = it.case
 			continue
 		end
 
-		default = it.case
+		it = isFunc and it() or it
+		if it.condition ~= case then
+			continue
+		end
+
+		it.case = it.case or util.getNextCase(i, cases)
+		it.case(stop)
+
+		continue
 	end
-	
+
 	if default then
 		default()
 	end
@@ -37,6 +46,7 @@ local function switch(value)
 end
 
 local function default(case)
+	assert(typeof(case) == "function", "You must provide a function")
 	return return_it("default", 0, case)
 end
 
@@ -45,13 +55,9 @@ local function case(condition)
 	return util.wrap(return_it, "case", condition)
 end
 
-local function getFunctions()
+local module = {}
+function module.getFunctions()
 	return switch, case, default
 end
 
-return {
-	switch = switch,
-	case = case, 
-	default = default,
-	getFunctions = getFunctions
-}
+return module
