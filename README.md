@@ -7,7 +7,11 @@ local myUnknownPet = if math.random(1, 2) == 1 then "dog" else "cat"
 switch (myUnknownPet) {
     case "dog" (function(stop)
         warn("My pet is a dog!")
-        stop() -- skip default and stop to check the other cases, but doesn't stop the execution of the function
+        --[[ 
+            the stop method skip the default function and stop to check the other cases, 
+            but doesn't stop the execution of the function
+        ]]
+        stop() 
     end)
 
     case "cat" (function(stop)
