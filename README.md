@@ -20,3 +20,21 @@ switch (myUnknownPet) {
     end)
 }
 ```
+
+### Case Stacking
+```lua
+local switch, case, default = require(LuaSwitch).getFunctions()
+local value = 0
+
+switch("B") {
+	case "A", -- Will execute case C
+	case "B", -- Will execute case C
+	case "C" (function()
+		value = 2
+	end),
+
+	default (function()
+		value -= 1
+	end)
+}
+```
