@@ -12,7 +12,7 @@ local function run(case, cases)
 		local isFunc = typeof(it) == "function"
 		if breakIt then 
 			return 
-		elseif isFunc == false and it.sentence_type == "case" then
+		elseif isFunc == false and it.sentence_type == "default" then
 			default = it.case
 			continue
 		end
@@ -24,8 +24,6 @@ local function run(case, cases)
 
 		it.case = it.case or util.getNextCase(i, cases)
 		it.case(stop)
-
-		continue
 	end
 
 	if default then
@@ -34,6 +32,11 @@ local function run(case, cases)
 end
 
 local function return_it(sentence_type, condition, case)
+	local case_type = typeof(case) == "table"
+	
+	case = case_type and case[1] or case
+	assert(case_type ~= "function", "You must provide a function")
+
 	return {
 		sentence_type = sentence_type,
 		condition = condition,
@@ -46,7 +49,6 @@ local function switch(value)
 end
 
 local function default(case)
-	assert(typeof(case) == "function", "You must provide a function")
 	return return_it("default", 0, case)
 end
 
