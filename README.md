@@ -66,15 +66,15 @@ local value = "B"
 switch(value) {
     case "A" (function()
         print("Case A")
-    end)
+    end),
 
     case "B" (function()
         print("Case B")
-    end)
+    end),
 
     case "C" (function()
         print("Case C")
-    end)
+    end),
 
     default(function()
         print("Executing default")
