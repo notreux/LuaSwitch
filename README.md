@@ -92,15 +92,15 @@ local value = "B"
 switch(value) {
     case "A" (function()
         print("Case A")
-    end)
+    end),
 
     case "B" (function()
         print("Case B")
-    end)
+    end),
 
     case "C" (function()
         print("Case C")
-    end)
+    end),
 
     default(function()
         print("Executing default")
@@ -117,19 +117,19 @@ switch(value) {
         function()
             print("Case A")
         end
-    }
+    },
 
     case "B" {
         function()
             print("Case B")
         end
-    }
+    },
 
     case "C" {
         function()
             print("Case C")
         end
-    }
+    },
 
     default { 
         function()
